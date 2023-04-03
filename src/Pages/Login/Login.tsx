@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export const Login = () => {
     const [isPasswordHidden, setIsPasswordHidden] = useState(true)
@@ -29,8 +29,15 @@ export const Login = () => {
                 />
                 <Pressable
                     onPress={() => setIsPasswordHidden(!isPasswordHidden)}
-                    style={[styles.hidePasswordIcon, { backgroundColor: isPasswordHidden ? 'black' : 'white' }]}
-                />
+                    style={styles.hidePasswordIcon}
+                >
+                    {isPasswordHidden ? <Text style={styles.tetextHidePasswordIcontIconLogin}>🫣</Text> : <Text style={styles.tetextHidePasswordIcontIconLogin}>🫢</Text>}
+                </Pressable>
+            </View>
+            <View>
+                <Pressable style={styles.loginButton}>
+                    <Text style={styles.textLogin}>Login</Text>
+                </Pressable>
             </View>
         </View>
     )
@@ -58,7 +65,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         width: 300,
         height: 50,
-        paddingLeft: 10,
+        paddingLeft: 20,
         marginBottom: 30,
     },
     passwordText: {
@@ -71,23 +78,35 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         width: 300,
         height: 50,
-        paddingLeft: 10,
+        paddingLeft: 20,
         flexDirection: 'row'
     },
     passwordInput: {
         backgroundColor: '#F9F9F9',
-        borderRadius: 15,
-        width: 250,
+        width: 220,
         height: 50,
-        paddingLeft: 10,
     },
     hidePasswordIcon: {
-        width: 30,
-        height: 30,
-        borderRadius: 15,
-        backgroundColor: 'black',
-        marginTop: 10,
-        borderColor: 'black',
-        borderWidth: 0.5,
+        width: 50,
+        height: 50,
+        backgroundColor: '#F9F9F9',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    tetextHidePasswordIcontIconLogin: {
+        fontSize: 30,
+    },
+    loginButton: {
+        backgroundColor: '#1F950D',
+        width: 100,
+        height: 50,
+        marginTop: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 25,
+    },
+    textLogin: {
+        color: '#FFFFFF',
+        fontSize: 20,
     }
 });
